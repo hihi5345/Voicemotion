@@ -5,12 +5,18 @@ import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
 import android.media.MediaRecorder
+import android.net.ConnectivityManager
+import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.widget.ProgressBar
 import android.widget.Toast
+import com.google.android.gms.tasks.Task
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.UploadTask
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.File
 import java.io.IOException
@@ -23,6 +29,9 @@ class MainActivity : AppCompatActivity() {
 
     private var mMediaRecorder: MediaRecorder? = null
     private var isRecording = false
+    private lateinit var recordFilePath: String
+
+    private val mFirebaseStorage by lazy { FirebaseStorage.getInstance() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +59,40 @@ class MainActivity : AppCompatActivity() {
                     it.release()
                 }
                 mMediaRecorder = null
+
                 toast(getString(R.string.message_recording_done))
+
+                // check network
+                val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                val activeNetwork = connectivityManager.activeNetworkInfo
+                val isNetworkOn = ((activeNetwork != null) && activeNetwork.isConnectedOrConnecting)
+
+                if (isNetworkOn.not()) return@setOnClickListener toast(getString(R.string.message_network_off))
+
+                val isWifi = (activeNetwork.type == ConnectivityManager.TYPE_WIFI)
+
+                if (isWifi.not()) return@setOnClickListener toast(getString(R.string.message_alert_not_wifi))
+
+                // upload wav file to firebase storage
+                val progressBar = ProgressBar(this)
+                progressBar.isIndeterminate = true
+                progressBar.visibility = ProgressBar.VISIBLE
+
+                val uri = Uri.fromFile(File(recordFilePath))
+                val uploadTask = mFirebaseStorage.getReference("wav/${recordFilePath.split("/").last()}").putFile(uri)
+
+                uploadTask
+                        .addOnFailureListener { exception ->
+                            toast(exception.toString())
+                            progressBar.visibility = ProgressBar.GONE
+                        }
+                        .addOnCompleteListener { task: Task<UploadTask.TaskSnapshot> ->
+                            if (task.isSuccessful.not()) return@addOnCompleteListener toast(getString(R.string.message_uploading_failed))
+                            val url = task.result.downloadUrl
+                            toast("${getString(R.string.message_uploading_done)}\n$url")
+                            progressBar.visibility = ProgressBar.GONE
+                        }
+
             }
             else {
                 button_record.setImageResource(R.drawable.ic_microphone)
@@ -64,7 +106,8 @@ class MainActivity : AppCompatActivity() {
                     val directory = File("${Environment.getExternalStorageDirectory().absolutePath}/Kaubrain")
                     if (directory.exists().not()) directory.mkdir()
 
-                    it.setOutputFile("${directory.path}/${System.currentTimeMillis()}.wav")
+                    recordFilePath = "${directory.path}/${System.currentTimeMillis()}.wav"
+                    it.setOutputFile(recordFilePath)
                     it.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
 
                     try {

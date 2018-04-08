@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "441659040528",
+    "firebase_url": "https://kaubrain418.firebaseio.com",
+    "project_id": "kaubrain418",
+    "storage_bucket": "kaubrain418.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441659040528:android:bf84d1cf759ff929",
+        "android_client_info": {
+          "package_name": "com.rapsealk.voicemotion"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441659040528-o86djhh41m6ibmgdiebpg4ugvt9g797n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rapsealk.voicemotion",
+            "certificate_hash": "63f22b946a69c14ca85ac8688711cafced1bf5ab"
+          }
+        },
+        {
+          "client_id": "441659040528-726tb10g5lgeqbjgbf1krkjt5i66sqa5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8mZorcBIVaoaO3W4zYNR2MYuOskza2bE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "441659040528-726tb10g5lgeqbjgbf1krkjt5i66sqa5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
