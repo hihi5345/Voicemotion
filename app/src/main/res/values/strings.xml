@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Voicemotion</string>
+
+    <string name="recording_on">Recording ON</string>
+    <string name="recording_off">Recording OFF</string>
+
+    <string name="message_recording_done">녹음 파일이 저장되었습니다.</string>
 </resources>

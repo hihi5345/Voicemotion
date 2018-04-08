@@ -6,13 +6,29 @@
     android:layout_height="match_parent"
     tools:context="com.rapsealk.voicemotion.MainActivity">
 
-    <TextView
+    <ImageButton
+        android:id="@+id/button_record"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:adjustViewBounds="true"
+        android:background="@drawable/round_corner"
+        android:src="@drawable/ic_microphone_off"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_record"
+        android:text="@string/recording_off"
+        android:textSize="32sp"
+        android:fontFamily="sans-serif-condensed"
+        android:textAlignment="center"/>
 
 </android.support.constraint.ConstraintLayout>
