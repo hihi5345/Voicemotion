@@ -14,6 +14,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.support.v4.app.ActivityCompat
 import android.support.v4.content.ContextCompat
+import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.widget.ProgressBar
 import android.widget.Toast
@@ -22,14 +23,14 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.*
-import java.nio.ByteBuffer
-import java.nio.ByteOrder
 
 class MainActivity : AppCompatActivity() {
 
     private val TAG = MainActivity::class.java.simpleName
 
     private val PERMISSION_CODE = 0x1010
+
+    private var mUploadOnWifiDisabled = true
 
     private var mAudioRecord: AudioRecord? = null
     private val mRecorderBPP = 16
@@ -38,7 +39,6 @@ class MainActivity : AppCompatActivity() {
     private val mAudioEncoding = AudioFormat.ENCODING_PCM_16BIT
     private val mAudioSource = MediaRecorder.AudioSource.MIC
 
-    // private var mMediaRecorder: MediaRecorder? = null
     private var isRecording = false
     private lateinit var fileName: String
     private var mBufferSizeInBytes: Int = 0
@@ -135,8 +135,6 @@ class MainActivity : AppCompatActivity() {
 
                     runOnUiThread {
                         toast(getString(R.string.message_recording_done))
-
-                        // updateWavHeader(File("$fileName.$EXT_PCM"))
                         copyWavFile()
                     }
 
@@ -147,81 +145,6 @@ class MainActivity : AppCompatActivity() {
                 button_record.setBackgroundResource(R.color.colorAccentLight)
                 text_status.text = getString(R.string.recording_off)
             }
-
-            /* TODO("permission")
-
-            if (isRecording) {
-                button_record.setImageResource(R.drawable.ic_microphone_off)
-                button_record.setBackgroundResource(R.color.colorAccentLight)
-                text_status.text = getString(R.string.recording_off)
-                mMediaRecorder?.let {
-                    it.stop()
-                    it.release()
-                }
-                mMediaRecorder = null
-
-                toast(getString(R.string.message_recording_done))
-
-                // check network
-                val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-                val activeNetwork = connectivityManager.activeNetworkInfo
-                val isNetworkOn = ((activeNetwork != null) && activeNetwork.isConnectedOrConnecting)
-
-                if (isNetworkOn.not()) return@setOnClickListener toast(getString(R.string.message_network_off))
-
-                val isWifi = (activeNetwork.type == ConnectivityManager.TYPE_WIFI)
-
-                if (isWifi.not()) return@setOnClickListener toast(getString(R.string.message_alert_not_wifi))
-
-                // upload wav file to firebase storage
-                val progressBar = ProgressBar(this)
-                progressBar.isIndeterminate = true
-                progressBar.visibility = ProgressBar.VISIBLE
-
-                val uri = Uri.fromFile(File(recordFilePath))
-                val uploadTask = mFirebaseStorage.getReference("wav/${recordFilePath.split("/").last()}").putFile(uri)
-
-                uploadTask
-                        .addOnFailureListener { exception ->
-                            toast(exception.toString())
-                            progressBar.visibility = ProgressBar.GONE
-                        }
-                        .addOnCompleteListener { task: Task<UploadTask.TaskSnapshot> ->
-                            if (task.isSuccessful.not()) return@addOnCompleteListener toast(getString(R.string.message_uploading_failed))
-                            val url = task.result.downloadUrl
-                            toast("${getString(R.string.message_uploading_done)}\n$url")
-                            progressBar.visibility = ProgressBar.GONE
-                        }
-
-            }
-            else {
-                button_record.setImageResource(R.drawable.ic_microphone)
-                button_record.setBackgroundResource(R.color.colorPrimaryLight)
-                text_status.text = getString(R.string.recording_on)
-                mMediaRecorder = MediaRecorder()
-                mMediaRecorder?.let {
-                    it.setAudioSource(MediaRecorder.AudioSource.MIC)
-                    it.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP)
-
-                    val directory = File("${Environment.getExternalStorageDirectory().absolutePath}/Kaubrain")
-                    if (directory.exists().not()) directory.mkdir()
-
-                    recordFilePath = "${directory.path}/${System.currentTimeMillis()}.wav"
-                    it.setOutputFile(recordFilePath)
-                    it.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB)
-
-                    try {
-                        it.prepare()
-                    } catch (e: IOException) {
-                        e.printStackTrace()
-                    }
-
-                    it.start()
-                }
-            }
-
-            isRecording = isRecording.not()
-            */
         }
     }
 
@@ -236,35 +159,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /*
-    private fun startRecording() {
-
-        mAudioRecord = AudioRecord(mAudioSource, mAudioSampleRate, mAudioChannel, mAudioEncoding, mBufferSizeInBytes)
-
-        mAudioRecord?.let {
-            assert(it.state == AudioRecord.STATE_INITIALIZED, {
-                return@let
-            })
-
-            it.startRecording()
-
-            isRecording = true
-
-            Thread({
-
-            })
-        }
-    }
-    */
-
     private fun copyWavFile() {
+
         val fInputStream: FileInputStream
         val fOutputStream: FileOutputStream
 
-        // var totalAudioLength = 0L
-        //var totalDataLength = totalAudioLength + 36
         val longSampleRate = mAudioSampleRate.toLong()
-        val channels = 1//2
+        val channels = 1 // 2
         val byteRate = mRecorderBPP * mAudioSampleRate * 2/*channels*/ / 8
 
         val data = ByteArray(mBufferSizeInBytes)
@@ -297,59 +198,65 @@ class MainActivity : AppCompatActivity() {
             toast("WAV 파일이 저장되었습니다.")
 
             File("$fileName.$EXT_PCM").delete()
+
+            uploadFileIfNetworkEnabled()
         }
         catch (e: IOException) {
             e.printStackTrace()
         }
     }
 
-    @Throws(IOException::class)
-    private fun writeWavHeader(out: OutputStream, channels: Short, sampleRate: Int, bitDepth: Short) {
-        val littleBytes = ByteBuffer.allocate(14)
-                .order(ByteOrder.LITTLE_ENDIAN)
-                .putShort(channels)
-                .putInt(sampleRate)
-                .putInt(sampleRate * channels * (bitDepth / 8))
-                .putShort((channels * (bitDepth / 8)).toShort())
-                .putShort(bitDepth)
-                .array()
-        out.write(byteArrayOf(
-                'R'.toByte(), 'I'.toByte(), 'F'.toByte(), 'F'.toByte(),
-                0, 0, 0, 0,
-                'W'.toByte(), 'A'.toByte(), 'V'.toByte(), 'E'.toByte(),
-                'f'.toByte(), 'm'.toByte(), 't'.toByte(), ' '.toByte(),
-                16, 0, 0, 0,
-                1, 0,
-                littleBytes[0], littleBytes[1],
-                littleBytes[2], littleBytes[3], littleBytes[4], littleBytes[5],
-                littleBytes[6], littleBytes[7], littleBytes[8], littleBytes[9],
-                littleBytes[10], littleBytes[11],
-                littleBytes[12], littleBytes[13],
-                'd'.toByte(), 'a'.toByte(), 't'.toByte(), 'a'.toByte(),
-                0, 0, 0, 0
-        ))
+    private fun uploadFileIfNetworkEnabled() {
+
+        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = connectivityManager.activeNetworkInfo
+        val isNetworkOn = ((activeNetwork != null) && activeNetwork.isConnectedOrConnecting)
+
+        Log.d(TAG, "isNetworkOn: $isNetworkOn")
+        if (isNetworkOn.not()) return toast(getString(R.string.message_network_off))
+
+        val isWifi = (activeNetwork.type == ConnectivityManager.TYPE_WIFI)
+
+        Log.d(TAG, "isWifi: $isWifi, mUploadOnWifiDisabled: $mUploadOnWifiDisabled")
+        if (isWifi.not() and mUploadOnWifiDisabled) {
+            AlertDialog.Builder(this@MainActivity)
+                    .setCancelable(false)
+                    .setTitle(getString(R.string.message_network_off))
+                    .setMessage(getString(R.string.message_alert_not_wifi))
+                    .setNegativeButton("취소", { dialog, _ ->
+                        dialog.dismiss()
+                    })
+                    .setPositiveButton("계속", { dialog, _ ->
+                        mUploadOnWifiDisabled = false
+                        dialog.dismiss()
+                        uploadFile()
+                    })
+                    .create()
+                    .show()
+        }
+        else return uploadFile()
     }
 
-    @Throws(IOException::class)
-    private fun updateWavHeader(wav: File) {
-        val sizes = ByteBuffer.allocate(8)
-                .order(ByteOrder.LITTLE_ENDIAN)
-                .putInt((wav.length() - 8).toInt())
-                .putInt((wav.length() - 44).toInt())
-                .array()
-        val randomAccessFile: RandomAccessFile
-        try {
-            randomAccessFile = RandomAccessFile(wav, "rw")
-            randomAccessFile.seek(4)
-            randomAccessFile.write(sizes, 0, 4)
-            randomAccessFile.seek(40)
-            randomAccessFile.write(sizes, 4, 4)
+    private fun uploadFile() {
 
-            randomAccessFile.close()
-        }
-        catch (e: IOException) {
-            throw e
-        }
+        val progressBar = ProgressBar(this)
+        progressBar.isIndeterminate = true
+        progressBar.visibility = ProgressBar.VISIBLE
+
+        val uri = Uri.fromFile(File("$fileName.$EXT_WAV"))
+        val uploadTask = mFirebaseStorage.getReference("wav/${fileName.split("/").last()}.$EXT_WAV").putFile(uri)
+
+        uploadTask
+                .addOnFailureListener { exception ->
+                    toast(exception.toString())
+                    progressBar.visibility = ProgressBar.GONE
+                }
+                .addOnCompleteListener { task: Task<UploadTask.TaskSnapshot> ->
+                    if (task.isSuccessful.not()) return@addOnCompleteListener toast(getString(R.string.message_uploading_failed))
+                    val url = task.result.downloadUrl
+                    toast("${getString(R.string.message_uploading_done)}\n$url")
+                    progressBar.visibility = ProgressBar.GONE
+                }
     }
 }
 
