@@ -1,0 +1,6 @@
+framework module Pods_iVoicemotion {
+  umbrella header "Pods-iVoicemotion-umbrella.h"
+
+  export *
+  module * { export * }
+}

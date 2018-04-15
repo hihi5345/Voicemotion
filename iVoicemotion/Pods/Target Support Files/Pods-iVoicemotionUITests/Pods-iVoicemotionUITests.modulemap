@@ -1,0 +1,6 @@
+framework module Pods_iVoicemotionUITests {
+  umbrella header "Pods-iVoicemotionUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

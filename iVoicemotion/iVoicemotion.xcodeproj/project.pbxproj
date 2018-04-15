@@ -1,0 +1,718 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3E8CD4CF478DBD6E285F64AF /* Pods_iVoicemotionUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A0D7EEF4E0630601681559 /* Pods_iVoicemotionUITests.framework */; };
+		56022C8DFE78F1743B0F16DC /* Pods_iVoicemotionTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C62E5FD27913C45E8F04477 /* Pods_iVoicemotionTests.framework */; };
+		5A08525C4228BD88FF4A6C81 /* Pods_iVoicemotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC6B1153C1ECBAE3EA7AD03C /* Pods_iVoicemotion.framework */; };
+		F6B6E4E8207FD5B900ABF4BC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B6E4E7207FD5B900ABF4BC /* AppDelegate.swift */; };
+		F6B6E4EA207FD5B900ABF4BC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B6E4E9207FD5B900ABF4BC /* ViewController.swift */; };
+		F6B6E4ED207FD5B900ABF4BC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6B6E4EB207FD5B900ABF4BC /* Main.storyboard */; };
+		F6B6E4EF207FD5BB00ABF4BC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6B6E4EE207FD5BB00ABF4BC /* Assets.xcassets */; };
+		F6B6E4F2207FD5BB00ABF4BC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6B6E4F0207FD5BB00ABF4BC /* LaunchScreen.storyboard */; };
+		F6B6E4FD207FD5BB00ABF4BC /* iVoicemotionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B6E4FC207FD5BB00ABF4BC /* iVoicemotionTests.swift */; };
+		F6B6E508207FD5BB00ABF4BC /* iVoicemotionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B6E507207FD5BB00ABF4BC /* iVoicemotionUITests.swift */; };
+		F6B802E720827DA70025CCB5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6B8D0EA20827A0000EA1542 /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F6B6E4F9207FD5BB00ABF4BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F6B6E4DC207FD5B900ABF4BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6B6E4E3207FD5B900ABF4BC;
+			remoteInfo = iVoicemotion;
+		};
+		F6B6E504207FD5BB00ABF4BC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F6B6E4DC207FD5B900ABF4BC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F6B6E4E3207FD5B900ABF4BC;
+			remoteInfo = iVoicemotion;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		15A0D7EEF4E0630601681559 /* Pods_iVoicemotionUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iVoicemotionUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		16F201711290CDAAADDF4CEB /* Pods-iVoicemotionTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVoicemotionTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iVoicemotionTests/Pods-iVoicemotionTests.release.xcconfig"; sourceTree = "<group>"; };
+		1C62E5FD27913C45E8F04477 /* Pods_iVoicemotionTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iVoicemotionTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		23C09B02A0461F5BD1408312 /* Pods-iVoicemotionUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVoicemotionUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-iVoicemotionUITests/Pods-iVoicemotionUITests.release.xcconfig"; sourceTree = "<group>"; };
+		5A49A94BC9825FC8B64A3086 /* Pods-iVoicemotion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVoicemotion.release.xcconfig"; path = "Pods/Target Support Files/Pods-iVoicemotion/Pods-iVoicemotion.release.xcconfig"; sourceTree = "<group>"; };
+		85AB7479420819FA6637621D /* Pods-iVoicemotion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVoicemotion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iVoicemotion/Pods-iVoicemotion.debug.xcconfig"; sourceTree = "<group>"; };
+		A6952B1548F8256283CA1543 /* Pods-iVoicemotionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVoicemotionTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iVoicemotionTests/Pods-iVoicemotionTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA0EFEDC696D9F61BD3A5AD1 /* Pods-iVoicemotionUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iVoicemotionUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-iVoicemotionUITests/Pods-iVoicemotionUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F6B6E4E4207FD5B900ABF4BC /* iVoicemotion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iVoicemotion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6B6E4E7207FD5B900ABF4BC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F6B6E4E9207FD5B900ABF4BC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F6B6E4EC207FD5B900ABF4BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F6B6E4EE207FD5BB00ABF4BC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F6B6E4F1207FD5BB00ABF4BC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F6B6E4F3207FD5BB00ABF4BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6B6E4F8207FD5BB00ABF4BC /* iVoicemotionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iVoicemotionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6B6E4FC207FD5BB00ABF4BC /* iVoicemotionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iVoicemotionTests.swift; sourceTree = "<group>"; };
+		F6B6E4FE207FD5BB00ABF4BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6B6E503207FD5BB00ABF4BC /* iVoicemotionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iVoicemotionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6B6E507207FD5BB00ABF4BC /* iVoicemotionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iVoicemotionUITests.swift; sourceTree = "<group>"; };
+		F6B6E509207FD5BB00ABF4BC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6B8D0EA20827A0000EA1542 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FC6B1153C1ECBAE3EA7AD03C /* Pods_iVoicemotion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iVoicemotion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F6B6E4E1207FD5B900ABF4BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A08525C4228BD88FF4A6C81 /* Pods_iVoicemotion.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6B6E4F5207FD5BB00ABF4BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56022C8DFE78F1743B0F16DC /* Pods_iVoicemotionTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6B6E500207FD5BB00ABF4BC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E8CD4CF478DBD6E285F64AF /* Pods_iVoicemotionUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F36FCC64D7ED43111A5A67F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FC6B1153C1ECBAE3EA7AD03C /* Pods_iVoicemotion.framework */,
+				1C62E5FD27913C45E8F04477 /* Pods_iVoicemotionTests.framework */,
+				15A0D7EEF4E0630601681559 /* Pods_iVoicemotionUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		256AF575149B981A0289B1E8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				85AB7479420819FA6637621D /* Pods-iVoicemotion.debug.xcconfig */,
+				5A49A94BC9825FC8B64A3086 /* Pods-iVoicemotion.release.xcconfig */,
+				A6952B1548F8256283CA1543 /* Pods-iVoicemotionTests.debug.xcconfig */,
+				16F201711290CDAAADDF4CEB /* Pods-iVoicemotionTests.release.xcconfig */,
+				CA0EFEDC696D9F61BD3A5AD1 /* Pods-iVoicemotionUITests.debug.xcconfig */,
+				23C09B02A0461F5BD1408312 /* Pods-iVoicemotionUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F6B6E4DB207FD5B900ABF4BC = {
+			isa = PBXGroup;
+			children = (
+				F6B6E4E6207FD5B900ABF4BC /* iVoicemotion */,
+				F6B6E4FB207FD5BB00ABF4BC /* iVoicemotionTests */,
+				F6B6E506207FD5BB00ABF4BC /* iVoicemotionUITests */,
+				F6B6E4E5207FD5B900ABF4BC /* Products */,
+				256AF575149B981A0289B1E8 /* Pods */,
+				0F36FCC64D7ED43111A5A67F /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F6B6E4E5207FD5B900ABF4BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F6B6E4E4207FD5B900ABF4BC /* iVoicemotion.app */,
+				F6B6E4F8207FD5BB00ABF4BC /* iVoicemotionTests.xctest */,
+				F6B6E503207FD5BB00ABF4BC /* iVoicemotionUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F6B6E4E6207FD5B900ABF4BC /* iVoicemotion */ = {
+			isa = PBXGroup;
+			children = (
+				F6B6E4E7207FD5B900ABF4BC /* AppDelegate.swift */,
+				F6B6E4E9207FD5B900ABF4BC /* ViewController.swift */,
+				F6B6E4EB207FD5B900ABF4BC /* Main.storyboard */,
+				F6B6E4EE207FD5BB00ABF4BC /* Assets.xcassets */,
+				F6B6E4F0207FD5BB00ABF4BC /* LaunchScreen.storyboard */,
+				F6B6E4F3207FD5BB00ABF4BC /* Info.plist */,
+				F6B8D0EA20827A0000EA1542 /* GoogleService-Info.plist */,
+			);
+			path = iVoicemotion;
+			sourceTree = "<group>";
+		};
+		F6B6E4FB207FD5BB00ABF4BC /* iVoicemotionTests */ = {
+			isa = PBXGroup;
+			children = (
+				F6B6E4FC207FD5BB00ABF4BC /* iVoicemotionTests.swift */,
+				F6B6E4FE207FD5BB00ABF4BC /* Info.plist */,
+			);
+			path = iVoicemotionTests;
+			sourceTree = "<group>";
+		};
+		F6B6E506207FD5BB00ABF4BC /* iVoicemotionUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F6B6E507207FD5BB00ABF4BC /* iVoicemotionUITests.swift */,
+				F6B6E509207FD5BB00ABF4BC /* Info.plist */,
+			);
+			path = iVoicemotionUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F6B6E4E3207FD5B900ABF4BC /* iVoicemotion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6B6E50C207FD5BB00ABF4BC /* Build configuration list for PBXNativeTarget "iVoicemotion" */;
+			buildPhases = (
+				1BB9CF604567CDFE9E225056 /* [CP] Check Pods Manifest.lock */,
+				F6B6E4E0207FD5B900ABF4BC /* Sources */,
+				F6B6E4E1207FD5B900ABF4BC /* Frameworks */,
+				F6B6E4E2207FD5B900ABF4BC /* Resources */,
+				F9D15501DBD76F9989E8E016 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iVoicemotion;
+			productName = iVoicemotion;
+			productReference = F6B6E4E4207FD5B900ABF4BC /* iVoicemotion.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F6B6E4F7207FD5BB00ABF4BC /* iVoicemotionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6B6E50F207FD5BB00ABF4BC /* Build configuration list for PBXNativeTarget "iVoicemotionTests" */;
+			buildPhases = (
+				A015FC7E12F037D3E5BA92FF /* [CP] Check Pods Manifest.lock */,
+				F6B6E4F4207FD5BB00ABF4BC /* Sources */,
+				F6B6E4F5207FD5BB00ABF4BC /* Frameworks */,
+				F6B6E4F6207FD5BB00ABF4BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6B6E4FA207FD5BB00ABF4BC /* PBXTargetDependency */,
+			);
+			name = iVoicemotionTests;
+			productName = iVoicemotionTests;
+			productReference = F6B6E4F8207FD5BB00ABF4BC /* iVoicemotionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F6B6E502207FD5BB00ABF4BC /* iVoicemotionUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F6B6E512207FD5BB00ABF4BC /* Build configuration list for PBXNativeTarget "iVoicemotionUITests" */;
+			buildPhases = (
+				45BCCAE9114561D1A460FD48 /* [CP] Check Pods Manifest.lock */,
+				F6B6E4FF207FD5BB00ABF4BC /* Sources */,
+				F6B6E500207FD5BB00ABF4BC /* Frameworks */,
+				F6B6E501207FD5BB00ABF4BC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F6B6E505207FD5BB00ABF4BC /* PBXTargetDependency */,
+			);
+			name = iVoicemotionUITests;
+			productName = iVoicemotionUITests;
+			productReference = F6B6E503207FD5BB00ABF4BC /* iVoicemotionUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F6B6E4DC207FD5B900ABF4BC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = rapsealk;
+				TargetAttributes = {
+					F6B6E4E3207FD5B900ABF4BC = {
+						CreatedOnToolsVersion = 9.3;
+					};
+					F6B6E4F7207FD5BB00ABF4BC = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = F6B6E4E3207FD5B900ABF4BC;
+					};
+					F6B6E502207FD5BB00ABF4BC = {
+						CreatedOnToolsVersion = 9.3;
+						TestTargetID = F6B6E4E3207FD5B900ABF4BC;
+					};
+				};
+			};
+			buildConfigurationList = F6B6E4DF207FD5B900ABF4BC /* Build configuration list for PBXProject "iVoicemotion" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F6B6E4DB207FD5B900ABF4BC;
+			productRefGroup = F6B6E4E5207FD5B900ABF4BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F6B6E4E3207FD5B900ABF4BC /* iVoicemotion */,
+				F6B6E4F7207FD5BB00ABF4BC /* iVoicemotionTests */,
+				F6B6E502207FD5BB00ABF4BC /* iVoicemotionUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F6B6E4E2207FD5B900ABF4BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6B6E4F2207FD5BB00ABF4BC /* LaunchScreen.storyboard in Resources */,
+				F6B802E720827DA70025CCB5 /* GoogleService-Info.plist in Resources */,
+				F6B6E4EF207FD5BB00ABF4BC /* Assets.xcassets in Resources */,
+				F6B6E4ED207FD5B900ABF4BC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6B6E4F6207FD5BB00ABF4BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6B6E501207FD5BB00ABF4BC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1BB9CF604567CDFE9E225056 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iVoicemotion-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45BCCAE9114561D1A460FD48 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iVoicemotionUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A015FC7E12F037D3E5BA92FF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-iVoicemotionTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9D15501DBD76F9989E8E016 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-iVoicemotion/Pods-iVoicemotion-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-iVoicemotion/Pods-iVoicemotion-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F6B6E4E0207FD5B900ABF4BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6B6E4EA207FD5B900ABF4BC /* ViewController.swift in Sources */,
+				F6B6E4E8207FD5B900ABF4BC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6B6E4F4207FD5BB00ABF4BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6B6E4FD207FD5BB00ABF4BC /* iVoicemotionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F6B6E4FF207FD5BB00ABF4BC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F6B6E508207FD5BB00ABF4BC /* iVoicemotionUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F6B6E4FA207FD5BB00ABF4BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6B6E4E3207FD5B900ABF4BC /* iVoicemotion */;
+			targetProxy = F6B6E4F9207FD5BB00ABF4BC /* PBXContainerItemProxy */;
+		};
+		F6B6E505207FD5BB00ABF4BC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F6B6E4E3207FD5B900ABF4BC /* iVoicemotion */;
+			targetProxy = F6B6E504207FD5BB00ABF4BC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F6B6E4EB207FD5B900ABF4BC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6B6E4EC207FD5B900ABF4BC /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F6B6E4F0207FD5BB00ABF4BC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F6B6E4F1207FD5BB00ABF4BC /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F6B6E50A207FD5BB00ABF4BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F6B6E50B207FD5BB00ABF4BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F6B6E50D207FD5BB00ABF4BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85AB7479420819FA6637621D /* Pods-iVoicemotion.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iVoicemotion/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rapsealk.iVoicemotion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F6B6E50E207FD5BB00ABF4BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5A49A94BC9825FC8B64A3086 /* Pods-iVoicemotion.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iVoicemotion/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rapsealk.iVoicemotion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F6B6E510207FD5BB00ABF4BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A6952B1548F8256283CA1543 /* Pods-iVoicemotionTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iVoicemotionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rapsealk.iVoicemotionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iVoicemotion.app/iVoicemotion";
+			};
+			name = Debug;
+		};
+		F6B6E511207FD5BB00ABF4BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 16F201711290CDAAADDF4CEB /* Pods-iVoicemotionTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iVoicemotionTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rapsealk.iVoicemotionTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iVoicemotion.app/iVoicemotion";
+			};
+			name = Release;
+		};
+		F6B6E513207FD5BB00ABF4BC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA0EFEDC696D9F61BD3A5AD1 /* Pods-iVoicemotionUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iVoicemotionUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rapsealk.iVoicemotionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iVoicemotion;
+			};
+			name = Debug;
+		};
+		F6B6E514207FD5BB00ABF4BC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 23C09B02A0461F5BD1408312 /* Pods-iVoicemotionUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = iVoicemotionUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.rapsealk.iVoicemotionUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = iVoicemotion;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F6B6E4DF207FD5B900ABF4BC /* Build configuration list for PBXProject "iVoicemotion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6B6E50A207FD5BB00ABF4BC /* Debug */,
+				F6B6E50B207FD5BB00ABF4BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6B6E50C207FD5BB00ABF4BC /* Build configuration list for PBXNativeTarget "iVoicemotion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6B6E50D207FD5BB00ABF4BC /* Debug */,
+				F6B6E50E207FD5BB00ABF4BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6B6E50F207FD5BB00ABF4BC /* Build configuration list for PBXNativeTarget "iVoicemotionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6B6E510207FD5BB00ABF4BC /* Debug */,
+				F6B6E511207FD5BB00ABF4BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F6B6E512207FD5BB00ABF4BC /* Build configuration list for PBXNativeTarget "iVoicemotionUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F6B6E513207FD5BB00ABF4BC /* Debug */,
+				F6B6E514207FD5BB00ABF4BC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F6B6E4DC207FD5B900ABF4BC /* Project object */;
+}
