@@ -6,6 +6,57 @@
     android:layout_height="match_parent"
     tools:context="com.rapsealk.voicemotion.MainActivity">
 
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_happy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_neutral"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Happy: 0.0"/>
+
+        <TextView
+            android:id="@+id/tv_neutral"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_happy"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Neutral: 0.0"/>
+
+        <TextView
+            android:id="@+id/tv_sad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/tv_angry"
+            app:layout_constraintTop_toBottomOf="@id/tv_happy"
+            android:text="Sad: 0.0"/>
+
+        <TextView
+            android:id="@+id/tv_angry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/tv_sad"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_happy"
+            android:text="Angry: 0.0"/>
+
+        <TextView
+            android:id="@+id/tv_disgust"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_angry"
+            android:text="Disgust: 0.0"/>
+
+    </android.support.constraint.ConstraintLayout>
+
     <ImageButton
         android:id="@+id/button_record"
         android:layout_width="wrap_content"

@@ -21,6 +21,10 @@ import android.widget.Toast
 import com.google.android.gms.tasks.Task
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
+import com.rapsealk.voicemotion.api.Api
+import com.rapsealk.voicemotion.api.PredictBody
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.*
 
@@ -49,6 +53,8 @@ class MainActivity : AppCompatActivity() {
 
     private val mFirebaseStorage by lazy { FirebaseStorage.getInstance() }
 
+    private val api by lazy { Api.retrofit.create(Api::class.java) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -61,26 +67,8 @@ class MainActivity : AppCompatActivity() {
 
             }
             ActivityCompat.requestPermissions(this, permissions, PERMISSION_CODE)
-        }
-
-        // set AudioRecord
-        mBufferSizeInBytes = AudioRecord.getMinBufferSize(mAudioSampleRate, mAudioChannel, mAudioEncoding)
-        assert(mBufferSizeInBytes != AudioRecord.ERROR_BAD_VALUE, {
-            toast("Unable to get minimum buffer size (sample rate: $mAudioSampleRate)")
-            return finish()
-        })
-
-        mAudioRecord = AudioRecord(mAudioSource, mAudioSampleRate, mAudioChannel, mAudioEncoding, mBufferSizeInBytes)
-
-        // var buffer: ByteArray
-        mAudioRecord?.let {
-            assert(it.state == AudioRecord.STATE_INITIALIZED, {
-                toast("Unable to initialize AudioRecord")
-                it.release()
-                return finish()
-            })
-            mBuffer = ByteArray(mBufferSizeInBytes)
-            it.startRecording()
+        } else {
+            init()
         }
 
         button_record.setOnClickListener {
@@ -153,9 +141,32 @@ class MainActivity : AppCompatActivity() {
             PERMISSION_CODE -> {
                 if (grantResults.isNotEmpty() && grantResults.all { it == PackageManager.PERMISSION_GRANTED}) {
                     toast("Permission granted.")
+                    init()
                 }
                 else finish()
             }
+        }
+    }
+
+    private fun init() {
+        // set AudioRecord
+        mBufferSizeInBytes = AudioRecord.getMinBufferSize(mAudioSampleRate, mAudioChannel, mAudioEncoding)
+        assert(mBufferSizeInBytes != AudioRecord.ERROR_BAD_VALUE, {
+            toast("Unable to get minimum buffer size (sample rate: $mAudioSampleRate)")
+            return finish()
+        })
+
+        mAudioRecord = AudioRecord(mAudioSource, mAudioSampleRate, mAudioChannel, mAudioEncoding, mBufferSizeInBytes)
+
+        // var buffer: ByteArray
+        mAudioRecord?.let {
+            assert(it.state == AudioRecord.STATE_INITIALIZED, {
+                toast("Unable to initialize AudioRecord")
+                it.release()
+                return finish()
+            })
+            mBuffer = ByteArray(mBufferSizeInBytes)
+            it.startRecording()
         }
     }
 
@@ -255,8 +266,28 @@ class MainActivity : AppCompatActivity() {
                     if (task.isSuccessful.not()) return@addOnCompleteListener toast(getString(R.string.message_uploading_failed))
                     val url = task.result.downloadUrl
                     toast("${getString(R.string.message_uploading_done)}\n$url")
+                    callApi(url.toString())
                     progressBar.visibility = ProgressBar.GONE
                 }
+    }
+
+    private fun callApi(url: String) {
+        val progressBar = ProgressBar(this)
+        progressBar.isIndeterminate = true
+        progressBar.visibility = ProgressBar.VISIBLE
+
+        api.getPredict(PredictBody(url))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe({ response ->
+                    val prediction = response.predictions
+                    tv_happy.text = "Happy: ${prediction.happy}"
+                    tv_neutral.text = "Neutral: ${prediction.neutral}"
+                    tv_sad.text = "Sad: ${prediction.sad}"
+                    tv_angry.text = "Angry: ${prediction.angry}"
+                    tv_disgust.text = "Disgust: ${prediction.disgust}"
+                    progressBar.visibility = ProgressBar.GONE
+                }, Throwable::printStackTrace)
     }
 }
 
