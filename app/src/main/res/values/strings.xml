@@ -4,6 +4,12 @@
     <string name="recording_on">Recording ON</string>
     <string name="recording_off">Recording OFF</string>
 
+    <string name="message_ip_address">서버의 아이피 주소를 입력해주세요.</string>
+    <string name="default_ip_address">127.0.0.1</string>
+
+    <string name="btn_register">등록</string>
+    <string name="btn_cancel">취소</string>
+
     <string name="message_recording_done">녹음 파일이 저장되었습니다.</string>
 
     <string name="message_uploading_done">업로드가 완료됐습니다.</string>
@@ -12,4 +18,7 @@
     <string name="message_network_off">네트워크 상태를 확인해주세요.</string>
 
     <string name="message_alert_not_wifi">Wifi가 아닐 경우 데이터 문제로 업로드할 수 없습니다.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

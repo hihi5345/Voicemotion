@@ -23,12 +23,13 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.UploadTask
 import com.rapsealk.voicemotion.api.Api
 import com.rapsealk.voicemotion.api.PredictBody
+import com.rapsealk.voicemotion.view.AddressDialogFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), AddressDialogFragment.DialogListener {
 
     private val TAG = MainActivity::class.java.simpleName
 
@@ -53,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
     private val mFirebaseStorage by lazy { FirebaseStorage.getInstance() }
 
-    private val api by lazy { Api.retrofit.create(Api::class.java) }
+    private lateinit var api: Api
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -133,6 +134,14 @@ class MainActivity : AppCompatActivity() {
                 button_record.setBackgroundResource(R.color.colorAccentLight)
                 text_status.text = getString(R.string.recording_off)
             }
+        }
+
+        api = Api.getInstance(getString(R.string.default_ip_address)).create(Api::class.java)
+
+        val addressDialog = AddressDialogFragment()
+
+        tv_ip_address.setOnClickListener {
+            addressDialog.show(supportFragmentManager, "Title")
         }
     }
 
@@ -281,13 +290,22 @@ class MainActivity : AppCompatActivity() {
                 .subscribeOn(Schedulers.io())
                 .subscribe({ response ->
                     val prediction = response.predictions
-                    tv_happy.text = "Happy: ${prediction.happy}"
-                    tv_neutral.text = "Neutral: ${prediction.neutral}"
-                    tv_sad.text = "Sad: ${prediction.sad}"
-                    tv_angry.text = "Angry: ${prediction.angry}"
-                    tv_disgust.text = "Disgust: ${prediction.disgust}"
+                    tv_happy.text = String.format("Happy: %.4f", prediction.happy)
+                    tv_neutral.text = String.format("Neutral: %.4f", prediction.neutral)
+                    tv_sad.text = String.format("Sad: %.4f", prediction.sad)
+                    tv_angry.text = String.format("Angry: %.4f", prediction.angry)
+                    tv_disgust.text = String.format("Disgust: %.4f", prediction.disgust)
                     progressBar.visibility = ProgressBar.GONE
                 }, Throwable::printStackTrace)
+    }
+
+    override fun onDialogPositiveClick(dialog: AddressDialogFragment, address: String) {
+        api = Api.getInstance(address).create(Api::class.java)
+        tv_ip_address.text = address
+    }
+
+    override fun onDialogNegativeClick(dialog: AddressDialogFragment) {
+        // TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
 

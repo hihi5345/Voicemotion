@@ -11,11 +11,13 @@ public interface Api {
 
     companion object {
 
-        public val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.35.9:3000/")
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+        public fun getInstance(address: String): Retrofit {
+            return Retrofit.Builder()
+                    .baseUrl("http://$address:3000/")
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+        }
     }
 
     @POST("predict")
