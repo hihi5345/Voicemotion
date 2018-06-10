@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity(), AddressDialogFragment.DialogListener {
 
     private var mAudioRecord: AudioRecord? = null
     private val mRecorderBPP = 16
-    private val mAudioSampleRate = 16000
+    private val mAudioSampleRate = 44100 // 16000
     private val mAudioChannel = AudioFormat.CHANNEL_IN_MONO
     private val mAudioEncoding = AudioFormat.ENCODING_PCM_16BIT
     private val mAudioSource = MediaRecorder.AudioSource.MIC
