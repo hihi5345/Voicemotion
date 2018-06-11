@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
+import android.graphics.drawable.ColorDrawable
 import android.media.AudioFormat
 import android.media.AudioRecord
 import android.media.MediaRecorder
@@ -294,7 +295,24 @@ class MainActivity : AppCompatActivity(), AddressDialogFragment.DialogListener {
                     tv_neutral.text = String.format("Neutral: %.4f", prediction.neutral)
                     tv_sad.text = String.format("Sad: %.4f", prediction.sad)
                     tv_angry.text = String.format("Angry: %.4f", prediction.angry)
-                    tv_disgust.text = String.format("Disgust: %.4f", prediction.disgust)
+
+                    // get the highest
+                    var highest = prediction.happy
+                    var background = android.R.color.holo_blue_bright
+                    if (highest < prediction.neutral) {
+                        highest = prediction.neutral
+                        background = android.R.color.holo_green_light
+                    }
+                    if (highest < prediction.sad) {
+                        highest = prediction.sad
+                        background = R.color.colorAccent
+                    }
+                    if (highest < prediction.angry) {
+                        highest = prediction.angry
+                        background = R.color.colorPrimary
+                    }
+                    root_layout.setBackgroundColor(ContextCompat.getColor(this, background))
+
                     progressBar.visibility = ProgressBar.GONE
                 }, Throwable::printStackTrace)
     }

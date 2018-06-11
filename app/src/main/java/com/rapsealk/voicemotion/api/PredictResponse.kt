@@ -9,6 +9,5 @@ data class Prediction(
     val happy: Double,
     val neutral: Double,
     val sad: Double,
-    val angry: Double,
-    val disgust: Double
+    val angry: Double
 )
